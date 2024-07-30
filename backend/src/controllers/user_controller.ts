@@ -6,7 +6,7 @@ import { Request, Response } from "express";
 import { createUser } from "../services/user_service";
 
 /**
- * Register a new user
+ * Register a New User
  */
 
 export const registerUser = async (req: Request, res: Response) => {

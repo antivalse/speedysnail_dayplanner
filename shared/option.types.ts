@@ -9,4 +9,4 @@ export interface Option {
   completed: boolean;
 }
 
-export type NewOption = Omit<Option, "id">;
+export type NewOption = Omit<Option, "id, active, completed">;
