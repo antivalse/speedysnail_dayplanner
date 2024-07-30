@@ -14,7 +14,7 @@ const router = express.Router();
  */
 router.get("/api", (req, res) => {
   res.send({
-    message: "You did it! This is a route!🫨 ",
+    message: "You did it! This is a route!🫨",
   });
 });
 

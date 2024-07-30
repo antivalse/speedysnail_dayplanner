@@ -18,7 +18,13 @@ console.log("🌱 Environment:", NODE_ENV);
 console.log("🚚 Path to frontend build:", frontendDistPath);
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 // Serve frontend
