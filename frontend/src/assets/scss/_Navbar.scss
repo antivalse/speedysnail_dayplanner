@@ -1,0 +1,33 @@
+/* Navbar.css */
+.navbar {
+  position: fixed; /* Make the navbar fixed */
+  top: 0; /* Align it to the top */
+  left: 0; /* Align it to the left */
+  right: 0; /* Align it to the right */
+  width: 100%; /* Make it span the full width of the viewport */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #333;
+  color: white;
+  z-index: 1000; /* Ensure it stays on top of other content */
+  box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+.navbar-buttons button {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.navbar-buttons button:hover {
+  background-color: #555;
+}
+
+/* Dark theme styling */
+.dark-theme {
+  background-color: #121212;
+  color: white;
+}

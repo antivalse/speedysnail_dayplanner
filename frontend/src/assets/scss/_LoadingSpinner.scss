@@ -1,0 +1,28 @@
+#loading-container {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 50%;
+  right: 50%;
+}
+
+#loading-spinner-wrapper {
+  position: fixed;
+  top: 50%;
+  right: 50%;
+}
+
+.loading-spinner {
+  animation: rotation 0.75s infinite ease;
+  font-size: 4rem;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(359deg);
+  }
+}

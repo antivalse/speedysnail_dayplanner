@@ -2,53 +2,47 @@
  * Theme Context instance and Context Provider Function
  */
 
-import { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 
-// Create a Theme context
-
-interface ThemeContextType {
+// Define the ThemeContextType
+export interface ThemeContextType {
   isDarkMode: boolean;
   toggleTheme: () => void;
 }
 
-export const ThemeContext = createContext<ThemeContextType | null>(null);
+// Create a Theme context
+export const ThemeContext = createContext<ThemeContextType | undefined>(
+  undefined
+);
 
 // Create theme context provider
-
 interface ThemeContextProviderProps {
   children: React.ReactNode;
 }
+
 const ThemeContextProvider: React.FC<ThemeContextProviderProps> = ({
   children,
 }) => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
+    // Initialize state from localStorage
     const savedTheme = localStorage.getItem("theme");
     return savedTheme ? JSON.parse(savedTheme) : false;
   });
 
-  // Create a function to change theme from dark to light and vice versa
+  // Sync state with localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("theme", JSON.stringify(isDarkMode));
+  }, [isDarkMode]);
 
+  // Toggle theme function
   const toggleTheme = () => {
-    setIsDarkMode((prevTheme: boolean) => {
-      const newTheme = !prevTheme;
-      localStorage.setItem("theme", JSON.stringify(newTheme));
-      return newTheme;
-    });
-
-    // Sync state with localStorage when component mounts
-    useEffect(() => {
-      const savedTheme = localStorage.getItem("theme");
-      if (savedTheme !== null) {
-        setIsDarkMode(JSON.parse(savedTheme));
-      }
-    }, []);
+    setIsDarkMode((prevTheme: boolean) => !prevTheme);
   };
+
   return (
-    <>
-      <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
-        {children}
-      </ThemeContext.Provider>
-    </>
+    <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
   );
 };
 
