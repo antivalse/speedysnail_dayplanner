@@ -19,3 +19,10 @@ model User {
 
   @@map("users") // Maps the model to the 'users' table
 }
+
+model Option {
+  id        Int @id @default(autoincrement())
+  title     String @unique 
+  active    Boolean 
+  completed Boolean
+}
