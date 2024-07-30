@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ESNext", // Specify ECMAScript target version
+    "module": "CommonJS", // Specify module code generation
+    "strict": true, // Enable all strict type-checking options
+    "esModuleInterop": true, // Enable compatibility with CommonJS and ES modules
+    "skipLibCheck": true, // Skip type checking of all declaration files
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": "./src", // Base directory to resolve non-relative module names
+    "paths": {
+      "@shared/*": ["../../shared/*"] // Path alias for shared types
+    },
+    "types": ["node"],
+    "outDir": "./dist" // Output directory for compiled JavaScript files
+  },
+  "include": ["src/**/*", "../../shared/**/*"], // Include backend and shared directory files
+  "exclude": ["node_modules", "**/*.spec.ts"] // Exclude test files and node_modules
+}
