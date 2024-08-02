@@ -1,5 +1,5 @@
-import prisma from "prisma";
-import { Option, NewOption } from "@shared/option.types";
+import prisma from "../prisma";
+import { NewOption } from "@shared/option.types";
 
 /**
  * Create a new option and store in database
@@ -27,7 +27,8 @@ export const createOption = async (data: NewOption) => {
 
 export const getOptions = async () => {
   try {
-    return await prisma.option.findMany();
+    const options = await prisma.option.findMany(); // Ensure 'option' is the correct model
+    return options;
   } catch (error) {
     console.error("Error getting options:", error);
     throw error;

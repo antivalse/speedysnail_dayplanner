@@ -4,6 +4,7 @@
 
 import express from "express";
 import { getAllUsers, registerUser } from "../controllers/user_controller";
+import { getAllOptions } from "../controllers/option_controller";
 
 const router = express.Router();
 
@@ -30,5 +31,11 @@ router.post("/api/register", registerUser);
  */
 
 router.get("/api/users", getAllUsers);
+
+/**
+ * Option routes
+ */
+
+router.get("/api/options", getAllOptions);
 
 export default router;
