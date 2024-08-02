@@ -32,12 +32,9 @@ export const createNewOption = async (req: Request, res: Response) => {
 export const getAllOptions = async (req: Request, res: Response) => {
   try {
     const options = await getOptions();
-    res.send({ status: "success", data: options });
-  } catch (err) {
-    res.status(500).send({
-      status: "error",
-      message: "Something went wrong when querying the database",
-    });
+    res.status(200).send(options);
+  } catch (error) {
+    res.status(500).send({ error: "Failed to fetch options" });
   }
 };
 

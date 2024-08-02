@@ -25,4 +25,5 @@ model Option {
   title     String @unique 
   active    Boolean 
   completed Boolean
+  @@map("options") // Maps the model to the "options" table
 }

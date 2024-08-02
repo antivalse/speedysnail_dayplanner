@@ -20,3 +20,12 @@ export const createUser = async (data: NewUser) => {
     throw error;
   }
 };
+
+export const getUsers = async () => {
+  try {
+    return await prisma.user.findMany();
+  } catch (error) {
+    console.error("Error getting users:", error);
+    throw error;
+  }
+};

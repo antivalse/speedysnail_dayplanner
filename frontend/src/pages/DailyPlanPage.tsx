@@ -37,6 +37,7 @@ const DailyPlanPage = () => {
     try {
       const data = await ActivitiesAPI.getOptions();
       setActivityOptions(data);
+      console.log("data is: ", data);
     } catch (err) {
       if (err instanceof Error) {
         console.log(err.message);

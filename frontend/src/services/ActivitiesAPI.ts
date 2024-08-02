@@ -5,14 +5,14 @@
 import axios from "axios";
 import { Option } from "../types/Options";
 
-const BASE_URL = "http://localhost:3000";
+const API_URL = import.meta.env.VITE_API_URL;
 
 /**
  * Get all options
  */
 
 export const getOptions = async () => {
-  const res = await axios.get<Option[]>(BASE_URL + "/options");
+  const res = await axios.get<Option[]>(API_URL + "/options");
   return res.data;
 };
 
@@ -27,7 +27,7 @@ export const updateOption = async (
   data: Partial<Option>
 ) => {
   const res = await axios.patch<Option>(
-    `${BASE_URL}/options/${option_id}`,
+    `${API_URL}/options/${option_id}`,
     data
   );
   return res.data;

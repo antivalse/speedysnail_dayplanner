@@ -26,7 +26,12 @@ export const createOption = async (data: NewOption) => {
  */
 
 export const getOptions = async () => {
-  return await prisma.option.findMany();
+  try {
+    return await prisma.option.findMany();
+  } catch (error) {
+    console.error("Error getting options:", error);
+    throw error;
+  }
 };
 
 /**

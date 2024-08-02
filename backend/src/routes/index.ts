@@ -3,7 +3,7 @@
  */
 
 import express from "express";
-import { registerUser } from "../controllers/user_controller";
+import { getAllUsers, registerUser } from "../controllers/user_controller";
 
 const router = express.Router();
 
@@ -24,5 +24,11 @@ router.get("/api", (req, res) => {
  */
 
 router.post("/api/register", registerUser);
+
+/**
+ * Get users
+ */
+
+router.get("/api/users", getAllUsers);
 
 export default router;

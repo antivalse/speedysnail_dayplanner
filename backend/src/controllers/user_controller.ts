@@ -3,7 +3,7 @@
  */
 
 import { Request, Response } from "express";
-import { createUser } from "../services/user_service";
+import { createUser, getUsers } from "../services/user_service";
 
 /**
  * Register a New User
@@ -19,5 +19,18 @@ export const registerUser = async (req: Request, res: Response) => {
       status: "error",
       message: "Failed to create a new user in database",
     });
+  }
+};
+
+/**
+ * Get all users
+ */
+
+export const getAllUsers = async (req: Request, res: Response) => {
+  try {
+    const users = await getUsers();
+    res.status(200).send(users);
+  } catch (error) {
+    res.status(500).send({ error: "Failed to fetch users" });
   }
 };
