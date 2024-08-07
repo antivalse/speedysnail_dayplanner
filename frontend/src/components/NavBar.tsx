@@ -13,11 +13,9 @@ const NavBar = () => {
   const navigate = useNavigate();
   return (
     <nav className="navbar">
-      <div className="navbar-brand">My Daily Planner</div>
+      <div className="navbar-brand">🐌 Speedy Snail Day Planner</div>
       <div className="navbar-buttons">
-        <button onClick={toggleTheme}>
-          {isDarkMode ? "Light Theme" : "Dark Theme"}
-        </button>
+        <button onClick={toggleTheme}>{isDarkMode ? "🔆" : "🌚"}</button>
         <button onClick={() => navigate("/")}>Home</button>
       </div>
     </nav>

@@ -75,7 +75,6 @@ const DailyPlanPage = () => {
 
   return (
     <>
-      {" "}
       <h1>Welcome to your daily planner, {username}!</h1>
       <h2>{formattedDate}</h2>
       {data && (
