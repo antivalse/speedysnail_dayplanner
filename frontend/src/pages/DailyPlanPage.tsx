@@ -4,6 +4,7 @@
 
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import ActivityOptions from "../components/ActivityOptions";
 import TodoTodayList from "../components/TodoTodayList";
 import { Option } from "../types/Options";
@@ -47,8 +48,14 @@ const DailyPlanPage = () => {
     }
   };
 
+  const { data } = useQuery({
+    queryKey: ["activities"],
+    queryFn: () => ActivitiesAPI.getOptions(),
+  });
+
+  console.log("data from usequery is: ", data);
+
   // Separate active options from inactive options
-  const activeOptions = activityOptions.filter((option) => !option.active);
   const inactiveOptions = activityOptions.filter((option) => option.active);
 
   // Toggle activity option's active status
@@ -71,10 +78,9 @@ const DailyPlanPage = () => {
       {" "}
       <h1>Welcome to your daily planner, {username}!</h1>
       <h2>{formattedDate}</h2>
-      <ActivityOptions
-        handleToggle={handleToggleOption}
-        options={activeOptions}
-      />
+      {data && (
+        <ActivityOptions handleToggle={handleToggleOption} options={data} />
+      )}
       <TodoTodayList
         handleToggle={handleToggleOption}
         options={inactiveOptions}
