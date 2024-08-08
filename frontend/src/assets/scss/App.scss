@@ -5,6 +5,14 @@
 /* Import Poppins font from Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
+/* Color Palette - Main Colors*/
+// Pale Pink: #F8BBD0 (mjukt och vänligt)
+// Soft Blue: #A2C2E4 (lugnt och avkopplande)
+// Mint Green: #B9D6B2 (fräscht och rogivande)
+// Warm Beige: #F6E2B3 (neutralt och mjukt)
+/*Secondary Colors*/
+// Coral: #FF6F61 (en uppfriskande accentfärg)
+// Light Gray: #D3D3D3 (för bakgrunder och avgränsningar)
 * {
   margin: 0;
   padding: 0;
@@ -16,12 +24,17 @@ body {
   height: 100%;
   margin: 0;
   font-family: "Poppins", sans-serif;
+  background-color: #f0eded;
 }
 
 #App {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+button {
+  background-color: #f8bbd0;
 }
 
 #container {
