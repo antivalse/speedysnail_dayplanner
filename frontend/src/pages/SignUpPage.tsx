@@ -19,7 +19,7 @@ function SignUpPage() {
   return (
     <>
       <h1>Create account</h1>
-
+      {createUserMutation.isSuccess ? "Created new user!" : ""}
       <SignUpForm
         handleSubmit={handleSubmit}
         setUsername={setUsername}

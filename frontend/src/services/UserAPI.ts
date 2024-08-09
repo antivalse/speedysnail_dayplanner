@@ -13,9 +13,9 @@ const API_URL = import.meta.env.VITE_API_URL;
  */
 
 export const registerUser = async (userData: NewUser) => {
-  const response: AxiosResponse<NewUser> = await axios.post(
+  const res: AxiosResponse<NewUser> = await axios.post(
     `${API_URL}/register`,
     userData
   );
-  return response.data;
+  return res.data;
 };
