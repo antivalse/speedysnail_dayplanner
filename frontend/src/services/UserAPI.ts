@@ -3,7 +3,8 @@
  *
  */
 
-import axios from "axios";
+import { NewUser } from "@shared/user.types";
+import axios, { AxiosResponse } from "axios";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -11,9 +12,10 @@ const API_URL = import.meta.env.VITE_API_URL;
  * Create a new user
  */
 
-export const registerUser = (userData: {
-  username: string;
-  password: string;
-}) => {
-  return axios.post(`${API_URL}/register`, userData);
+export const registerUser = async (userData: NewUser) => {
+  const response: AxiosResponse<NewUser> = await axios.post(
+    `${API_URL}/register`,
+    userData
+  );
+  return response.data;
 };
