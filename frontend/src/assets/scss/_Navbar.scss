@@ -9,26 +9,36 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: #333;
-  color: white;
+  background-color: #f4f4f4;
   z-index: 1000; /* Ensure it stays on top of other content */
   box-sizing: border-box; /* Ensure padding is included in the width */
+  #snail-logo {
+    font-size: 2.5rem;
+  }
+  #logo-left-text {
+    font-weight: bold;
+    font-size: 2.5rem;
+    color: #ff6f61;
+  }
+  #logo-right-text {
+    color: black;
+  }
 }
 
 .navbar-buttons button {
   border-radius: 20px;
   margin-left: 1rem;
   padding: 0.5rem 1rem;
-  border: none;
+  border: 1px solid black;
   cursor: pointer;
 }
 
 .navbar-buttons button:hover {
-  background-color: #555;
+  background-color: #ff6f61;
 }
 
 /* Dark theme styling */
 .dark-theme {
-  background-color: #121212;
+  background-color: #05006b;
   color: white;
 }

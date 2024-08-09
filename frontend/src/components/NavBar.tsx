@@ -13,7 +13,11 @@ const NavBar = () => {
   const navigate = useNavigate();
   return (
     <nav className="navbar">
-      <div className="navbar-brand">🐌 Speedy Snail Day Planner</div>
+      <div className="navbar-brand">
+        <span id="snail-logo">🐌 </span>
+        <span id="logo-left-text">SPEEDY SNAIL</span>{" "}
+        <span id="logo-right-text">Day Planner</span>
+      </div>
       <div className="navbar-buttons">
         <button onClick={toggleTheme}>
           {isDarkMode ? "Light mode" : "Dark mode"}
