@@ -4,7 +4,7 @@
 
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import ActivityOptions from "../components/ActivityOptions";
 import TodoTodayList from "../components/TodoTodayList";
 import { Option } from "../types/Options";
@@ -16,6 +16,7 @@ const DailyPlanPage = () => {
   const [toggle, setToggle] = useState(false);
 
   const { username } = useParams();
+  const queryClient = useQueryClient();
 
   // create navigate instance
   const navigate = useNavigate();
@@ -64,11 +65,16 @@ const DailyPlanPage = () => {
     setActivityOptions([...activityOptions, updatedOption]);
     setChosenActivities([...chosenActivities, updatedOption]);
     setToggle(!toggle);
+    queryClient.invalidateQueries({ queryKey: ["activities"] });
   };
 
   useEffect(() => {
     getActivityOptions();
   }, [toggle]);
+
+  if (!data) {
+    return;
+  }
 
   return (
     <>
@@ -77,12 +83,12 @@ const DailyPlanPage = () => {
       {data && (
         <ActivityOptions
           handleToggle={handleToggleOption}
-          options={activityOptions.filter((option) => !option.active)}
+          options={data.filter((option) => !option.active)}
         />
       )}
       <TodoTodayList
         handleToggle={handleToggleOption}
-        options={activityOptions.filter((option) => option.active)}
+        options={data.filter((option) => option.active)}
       />
       <button onClick={() => navigate("/")}>Log out</button>
     </>
