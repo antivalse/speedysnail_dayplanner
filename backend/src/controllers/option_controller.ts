@@ -7,7 +7,9 @@ import {
   createOption,
   getOption,
   getOptions,
+  updateOption,
 } from "../services/option_service";
+import { Option } from "@shared/option.types";
 
 /**
  * Create a New Option
@@ -56,6 +58,31 @@ export const getOptionById = async (req: Request, res: Response) => {
       res.status(500).send({
         status: "error",
         message: "Something went wrong when querying the database",
+      });
+    }
+  }
+};
+
+/**
+ * Update option
+ */
+
+export const update = async (req: Request, res: Response) => {
+  const optionId = Number(req.params.optionId);
+  try {
+    console.log(`Updating option with ID: ${optionId} and data:`, req.body);
+    const option = await updateOption(optionId, req.body);
+    res.status(200).send({ status: "success", data: option });
+  } catch (err: any) {
+    console.error("Error during update:", err); // Detailed error logging
+
+    if (err.code === "P2025") {
+      res.status(404).send({ status: "error", message: "Option Not Found" });
+    } else {
+      res.status(500).send({
+        status: "error",
+        message: "Something went wrong when querying the database",
+        error: err.message, // Send back the actual error message
       });
     }
   }

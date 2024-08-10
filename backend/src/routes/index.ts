@@ -4,7 +4,7 @@
 
 import express from "express";
 import { getAllUsers, registerUser } from "../controllers/user_controller";
-import { getAllOptions } from "../controllers/option_controller";
+import { getAllOptions, update } from "../controllers/option_controller";
 
 const router = express.Router();
 
@@ -37,5 +37,12 @@ router.get("/api/users", getAllUsers);
  */
 
 router.get("/api/options", getAllOptions);
+
+/**
+ * PATCH /options/:id
+ * Update options active state
+ */
+
+router.patch("/api/options/:optionId", update);
 
 export default router;

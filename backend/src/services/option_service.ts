@@ -1,5 +1,5 @@
 import prisma from "../prisma";
-import { NewOption } from "@shared/option.types";
+import { NewOption, Option } from "@shared/option.types";
 
 /**
  * Create a new option and store in database
@@ -45,5 +45,20 @@ export const getOption = async (optionId: number) => {
     where: {
       id: optionId,
     },
+  });
+};
+
+/**
+ * Update a Single Option
+ * @param optionId The ID of Option to Update
+ * @param data Option data
+ */
+
+export const updateOption = async (optionId: number, data: Partial<Option>) => {
+  return await prisma.option.update({
+    where: {
+      id: optionId,
+    },
+    data,
   });
 };
