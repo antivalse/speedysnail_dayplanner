@@ -55,9 +55,6 @@ const DailyPlanPage = () => {
 
   console.log("data from usequery is: ", data);
 
-  // Separate active options from inactive options
-  const inactiveOptions = activityOptions.filter((option) => option.active);
-
   // Toggle activity option's active status
   const handleToggleOption = async (option: Option) => {
     // Update option in database
@@ -78,11 +75,14 @@ const DailyPlanPage = () => {
       <h1>Welcome to your daily planner, {username}!</h1>
       <h2>{formattedDate}</h2>
       {data && (
-        <ActivityOptions handleToggle={handleToggleOption} options={data} />
+        <ActivityOptions
+          handleToggle={handleToggleOption}
+          options={activityOptions.filter((option) => !option.active)}
+        />
       )}
       <TodoTodayList
         handleToggle={handleToggleOption}
-        options={inactiveOptions}
+        options={activityOptions.filter((option) => option.active)}
       />
       <button onClick={() => navigate("/")}>Log out</button>
     </>
