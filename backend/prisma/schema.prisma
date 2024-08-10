@@ -17,6 +17,7 @@ model User {
 
 model Option {
   id        Int     @id @default(autoincrement())
-  title     String  @unique
+  title     String  
+  active    Boolean @default(false)
   @@map("options")
 }
